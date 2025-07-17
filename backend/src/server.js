@@ -94,6 +94,10 @@ app.use(rateLimiter);
 //   console.log(`Req method is ${req.method} & Req URL is ${req.url}`);
 //   next();
 // });
+app.get('/health', (req, res) => {
+  res.send('OK');
+});
+
 
 app.use("/api/notes", notesRoutes);
 
@@ -103,6 +107,10 @@ if (process.env.NODE_ENV === "production") {
     // app.get("*", (req, res) => {
     //     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
     // });
+    app.get('/health', (req, res) => {
+        res.send('OK');
+    });
+
 }
 
 connectDB().then(() => {
